@@ -11,9 +11,6 @@
       <li class="nav-item active">
         <li><%= link_to 'レシピ投稿', new_recipe_path, class: "sign" %></li>
       </li>
-      <li class="nav-item active">
-        <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "sign" %></li>
-      </li>
       <li class="nav-item">
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign" %></li>
       </li>
@@ -65,6 +62,8 @@
       </div>
     </div>
 
+    <div class="comment-box">
+    <% if user_signed_in? %>
     <div class="good-count">
       <h3>!!　いいね獲得数　<%= @recipe.likes.count %>　!!</h3>
     </div>
@@ -75,15 +74,12 @@
         <%= button_to "いいね", recipe_likes_path(@recipe), class: "mybutton" %>
       <% end %>
     </div>
-
-    <div class="comment-box">
-    <% if user_signed_in? %>
       <%= form_with(model: [@recipe, @comment], local: true) do |form| %>
           <%= form.text_area :text, class:"comment-text", placeholder: "コメントする", rows: "2" %>
           <%= form.submit "SEND",class:"comment-btn" %>
       <% end %>
     <% else %>
-      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+      <strong><p>※ コメント・いいねの投稿には新規登録/ログインが必要です ※</p></strong>
     <% end %>
     </div>
   </div>

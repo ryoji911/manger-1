@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :recipes, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments
   has_one_attached :image
   has_many :likes, dependent: :destroy
   has_many :liked_recipes, through: :likes, source: :recipe

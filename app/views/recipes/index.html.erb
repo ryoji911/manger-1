@@ -12,9 +12,6 @@
         <li><%= link_to 'レシピ投稿', new_recipe_path, class: "sign" %></li>
       </li>
       <li class="nav-item">
-        <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "sign" %></li>
-      </li>
-      <li class="nav-item">
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign" %></li>
       </li>
       <% else %>

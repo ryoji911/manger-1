@@ -17,6 +17,15 @@
   font-size: 22px;
 }
 
+.comment{
+  text-align: center;
+  color: darkred;
+}
+
+.error-message{
+  text-align: center;
+}
+
 .form-header-text {
   line-height: 100px;
   border-bottom: 1px solid #f5f5f5;

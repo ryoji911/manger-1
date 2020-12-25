@@ -7,9 +7,8 @@
       ユーザー情報入力
     </h2>
   </div>
-
-  <%= render 'shared/error_messages', model: @user %>
-
+  <h6 class="comment">ユーザー登録することで、レシピの投稿や<br>コメント、いいねの投稿ができるようになります</h6>
+  <%= render 'shared/error_messages', model: @user, class: "error-message" %>
   <div class="form-group">
     <div class='form-text-wrap'>
       <label class="form-text">名前</label>
