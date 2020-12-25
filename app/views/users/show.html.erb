@@ -1,0 +1,93 @@
+<%= render "shared/header" %>
+
+<nav class="navbar navbar-expand-lg navbar-light text-dark bg-dark" id="home">
+  <a class="navbar-brand text-white" href="#entrance">Manger Recipes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <li><%= link_to 'レシピ投稿', new_recipe_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign" %></li>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログイン', new_user_session_path, class: "sign" %></li>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="inner">
+    <div class="user__wrapper">
+      <h2 class="page-heading">
+        <%= "#{@user.name}さんの情報"%>
+      </h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="table__col1">名前</th>
+            <td class="table__col2"><%= @user.name %></td>
+          </tr>
+          <div class='recipe-img-content'>
+            <%= image_tag @user.image, class: "user-img" %>
+          </div>
+          <tr>
+            <th class="table__col1">料理ジャンル</th>
+            <td class="table__col2"><%= @user.genre.name %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">店名</th>
+            <td class="table__col2"><%= @user.restaurant %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">ホームページ</th>
+            <td class="table__col2"><%= @user.url %></td>
+          </tr>
+          <tr>
+            <th class="table__col1">経歴</th>
+            <td class="table__col2"><%= @user.career %></td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="page-heading" id="entrance">
+        <%= "#{@user.name} さんのレシピ一覧"%>
+      </h2>
+      <div class='item-contents'>
+        <ul class='item-lists'>
+          <% @user.recipes.each do |recipe| %>
+            <li class='list'>
+              <%= link_to recipe_path(recipe.id) do %>
+              <div class='recipe-img-content'>
+                <%= image_tag recipe.image, class: "recipe-img" %>
+              </div>
+              <div class='recipe-info'>
+                <h3 class='recipe-name'>
+                  <%= recipe.menu_name %>
+                </h3>
+                <div class='recipe-details'>
+                  <span><%= recipe.user.name %>　さん<br>作成時間　<%= recipe.time %></span>
+                </div>
+              </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

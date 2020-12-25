@@ -1,0 +1,107 @@
+
+.inner{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.recipe-img-show{
+  width: 50vh;
+  height: 50vh;
+}
+
+.recipe_detail {
+  font-size: 2vh;
+  display: block;
+}
+
+.recipe_hedding{
+  font-size: 5vh;
+  margin: 0 auto;
+}
+
+.detail_title{
+
+  font-size: 3vh;
+}
+
+.detail_message{
+  color: rgb(67, 171, 179);
+  white-space: pre;
+  text-align: justify;
+  margin-left: 10vw;
+  text-justify: inter-ideograph;
+  font-size: 2.5vh;
+}
+
+.detail_message_point{
+  color: rgb(67, 171, 179);
+  white-space: pre;
+  text-align: center;
+  margin: 0 10vw;
+  text-justify: inter-ideograph;
+  font-size: 2.5vh;
+}
+
+.comment-box {
+  width: 40vw;
+  background-color: #fff;
+  margin: 5vh 0;
+  text-align: center;
+}
+
+.comment-text {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  border: solid 2px #dedede;
+  resize: none;
+}
+
+.comment-btn {
+  line-height: 30px;
+  background-color: #3CCACE;
+  border: 1px solid #3CCACE;
+  color: #fff;
+  width: 50%;
+  min-width: 150px;
+  font-size: 18px;
+  margin-bottom: 2vh;
+}
+
+.comment-show{
+  width: 100vw;
+  display: block;
+}
+
+.comment-pre{
+  margin: 0 25vw;
+}
+
+.good-count{
+  font-size: 25px;
+  color: rgb(255, 136, 0);
+  margin: 3vh 0;
+
+}
+
+.mybutton{
+  line-height: 30px;
+  background-color: #3CCACE;
+  color: #fff;
+  width: 10vw;
+  font-size: 3vh;
+  margin-bottom: 2vh;
+}
+
+.mybutton-delete{
+  line-height: 30px;
+  background-color: #3CCACE;
+  color: #fff;
+  width: 20vw;
+  font-size: 2.5vh;
+  margin-bottom: 2vh;
+}

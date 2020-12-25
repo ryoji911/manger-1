@@ -1,0 +1,104 @@
+<%= render "shared/header" %>
+
+<nav class="navbar navbar-expand-lg navbar-light text-dark bg-dark" id="home">
+  <a class="navbar-brand text-white" href="/">Manger Recipes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+      <li class="nav-item active">
+        <li><%= link_to 'レシピ投稿', new_recipe_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item active">
+        <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign" %></li>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログイン', new_user_session_path, class: "sign" %></li>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+  <div class="inner">
+    <div class="recipe_wrapper">
+      <p class="recipe_hedding">
+        <%= @recipe.menu_name %>
+      </p>
+      <% if user_signed_in? && current_user.id == @recipe.user_id %>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "編集する", edit_recipe_path(@recipe.id) %>
+        </button>
+        <button type="button" class="btn btn-outline-secondary">
+          <%= link_to "削除する", recipe_path(@recipe.id), method: :delete %>
+        </button>
+      <% end %>
+      <div class="img-thumbnail">
+        <%= image_tag @recipe.image, class: "recipe-img-show" %>
+      </div>
+      <div class="recipe_body">
+        <div class="recipe_detail">
+          <p class="detail_title">＜作成者＞</p>
+          <p class="detail_message"><h3><%= link_to @recipe.user.name, user_path(@recipe.user_id) %>　さん</h3></p>
+        </div>
+        <div class="recipe_detail">
+          <p class="detail_title">＜材料／分量＞</p>
+          <p class="detail_message"><%= @recipe.material %></p>
+        </div>
+        <div class="recipe_detail">
+          <p class="detail_title">＜作り方＞</p>
+          <p class="detail_message"><%= @recipe.process %></p>
+        </div>
+        <div class="recipe_detail">
+          <p class="detail_title">＜こだわり・ポイント＞</p>
+          <p class="detail_message_point"><%= @recipe.point %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="good-count">
+      <h3>!!　いいね獲得数　<%= @recipe.likes.count %>　!!</h3>
+    </div>
+    <div class="good-btn">
+      <% if current_user.already_liked?(@recipe) %>
+        <%= button_to 'いいねを取り消す', recipe_like_path(@recipe), method: :delete, class: "mybutton-delete" %>
+      <% else %>
+        <%= button_to "いいね", recipe_likes_path(@recipe), class: "mybutton" %>
+      <% end %>
+    </div>
+
+    <div class="comment-box">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@recipe, @comment], local: true) do |form| %>
+          <%= form.text_area :text, class:"comment-text", placeholder: "コメントする", rows: "2" %>
+          <%= form.submit "SEND",class:"comment-btn" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+    </div>
+  </div>
+
+    <div class="comennt-show">
+      <div class="comment-pre">
+      <p>＜コメント一覧＞</p>
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <p>
+              <strong><%= link_to comment.user.name, "/users/#{comment.user_id}" %>：</strong>
+              <%= comment.text %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+<%= render "shared/footer" %>

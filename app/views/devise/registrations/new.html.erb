@@ -1,0 +1,105 @@
+<%= render "shared/header" %>
+
+<%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+<div class='form-wrap'>
+  <div class='form-header'>
+    <h2 class='form-header-text'>
+      ユーザー情報入力
+    </h2>
+  </div>
+
+  <%= render 'shared/error_messages', model: @user %>
+
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">名前</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :name, class:"input-default", id:"name", placeholder:"例) 山田太郎", maxlength:"40" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">メールアドレス</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
+    <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">パスワード(確認)</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"パスワード（確認）" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+    <%= f.label :料理ジャンル %><br />
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"genre-select"}) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">店名</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :restaurant, class:"input-default", id:"restaurant", placeholder:"例) リストランテ〇〇", maxlength:"40" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">URL</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :url, class:"input-default", id:"url", placeholder:"例) http://......", maxlength:"40" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap-keireki'>
+      <label class="form-text">経歴</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <%= f.text_area :carrer, class:"input-default-career", id:"career", placeholder:"", maxlength:"40" %>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+    <div class="weight-bold-text">
+      本人顔写真
+    </div>
+    <div class="click-upload">
+      <p>
+        クリックしてファイルをアップロード
+      </p>
+      <%= f.file_field :image, id:"item-image" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+    <h6>あなたは料理人ですか？</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+          はい
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+          いいえ
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class='register-btn'>
+    <%= f.submit "会員登録" ,class:"register-blue-btn" %>
+  </div>
+</div>
+<% end %>
+
+
+<%= render "shared/footer" %>

@@ -1,0 +1,63 @@
+<%= render "shared/header" %>
+
+<div class="new-recipe-contents">
+  <div class="new-recipe-main">
+    <h2 class="new-recipe-title">新規まかないレシピ投稿</h2>
+
+    <%= render 'shared/error_messages', model: @recipe %>
+
+    <%= form_with(model: @recipe,local: true) do |f| %>
+    <div class="img-upload">
+      <div class="weight-bold-text">まかない画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>クリックしてファイルをアップロード</p>
+        <%= f.file_field :image, id:"recipe-image" %>
+      </div>
+    </div>
+      <div class="new-recipes">
+        <div class="weight-bold-text">
+          料理名
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :menu_name, class:"menu-name", id:"recipe-name", placeholder:"料理名（必須 40文字まで)", maxlength:"40" %>
+      </div>
+      <div class="new-recipes">
+        <div class="weight-bold-text">
+          材料・分量
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :material, class:"recipe-process", id:"recipe-material", placeholder:"まかないの材料・分量（必須1,000文字まで）" ,maxlength:"1000" %>
+      </div>
+      <div class="new-recipes">
+        <div class="weight-bold-text">
+          作り方
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :process, class:"recipe-process", id:"recipe-process", placeholder:"作り方の説明（必須1,000文字まで）" ,maxlength:"1000" %>
+      </div>
+      <div class="new-recipes">
+        <div class="weight-bold-text">
+           ポイント・こだわり
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :point, class:"recipe-point", id:"recipe-point", placeholder:"まかないのポイント・こだわり（必須1,000文字まで）" ,maxlength:"1000" %>
+      </div>
+      <div class="new-recipes">
+        <div class="weight-bold-text">
+          作成時間
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :time, class:"menu-name", id:"recipe-time", placeholder:"作成時間　例）40分" %>
+      </div>
+      <div class="create-btn-contents">
+      <%= f.submit "作成" ,class:"create-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>

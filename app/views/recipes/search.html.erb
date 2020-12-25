@@ -1,0 +1,54 @@
+<%= render "shared/header" %>
+
+<nav class="navbar navbar-expand-lg navbar-light text-dark bg-dark" id="home">
+  <a class="navbar-brand text-white" href="index/#entrance">Manger Recipes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <li><%= link_to 'レシピ投稿', new_recipe_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'マイページ', "/users/#{current_user.id}", class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sign" %></li>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign" %></li>
+      </li>
+      <li class="nav-item">
+        <li><%= link_to 'ログイン', new_user_session_path, class: "sign" %></li>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
+
+<div class='item-contents'>
+  <ul class='item-lists'>
+    <% @recipes.each do |recipe| %>
+      <li class='list'>
+        <%= link_to recipe_path(recipe.id) do %>
+        <div class='recipe-img-content'>
+          <%= image_tag recipe.image, class: "recipe-img" %>
+        </div>
+        <div class='recipe-info'>
+          <h3 class='recipe-name'>
+            <%= recipe.menu_name %>
+          </h3>
+          <div class='recipe-details'>
+            <span><%= recipe.user.name %>　さん<br>作成時間　<%= recipe.time %></span>
+          </div>
+        </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<%= render "shared/footer" %>

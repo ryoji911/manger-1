@@ -1,0 +1,12 @@
+<header class='top-page-header'>
+  <div class='search-bar-contents'>
+    <%= link_to image_tag("logo-color.png", class:"manger-icon"), "/" %>
+    <%= form_with(url: search_recipes_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "キーワード", class: "search-input" %>
+      <%# <input class='input-box' placeholder='キーワードから探す'> %>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %>
+      </button>
+    <% end %>
+  </div>
+</header>
