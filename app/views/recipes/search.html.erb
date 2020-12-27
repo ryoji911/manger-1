@@ -41,6 +41,7 @@
           <div class='recipe-details'>
             <span><%= recipe.user.name %>　さん<br>作成時間　<%= recipe.time %></span>
           </div>
+            <h5>いいね件数: <%= recipe.likes.count %></h5>
         </div>
         <% end %>
       </li>
