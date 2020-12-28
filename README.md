@@ -38,7 +38,6 @@ https://manger-1.herokuapp.com/
 # 機能
 ## ・ユーザーログイン機能
 ユーザーである料理人は、名前、メールアドレス、パスワード、自身の料理のジャンル、店名、URL、経歴を入力することで、ユーザー登録することができます。  
-https://user-images.githubusercontent.com/74886411/103197207-f998eb00-4928-11eb-8704-5d64d18d2071.mp4
 
 
 ## ・レシピ投稿機能
@@ -71,6 +70,10 @@ https://user-images.githubusercontent.com/74886411/103197207-f998eb00-4928-11eb-
 # 実装予定の機能
 ・ユーザー一覧機能  
 ・ユーザー詳細に、google Maps APIを使って、店の地図の表示
+
+
+# ER図
+<img width="698" alt="e661e3db4ac49f87ec71b172cc586a4e" src="https://user-images.githubusercontent.com/74886411/103198096-d40ce100-492a-11eb-9234-2b666d99b7aa.png">
 
 
 # テーブル設計
