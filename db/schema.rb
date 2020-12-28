@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2020_12_24_122208) do
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "genre_id"
-    t.string "restaurant"
+    t.string "genre_id", null: false
+    t.string "restaurant", null: false
     t.string "url"
-    t.text "career"
+    t.text "career", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
