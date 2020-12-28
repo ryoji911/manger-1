@@ -48,6 +48,7 @@ https://manger-1.herokuapp.com/
 投稿したレシピの写真、名前、作成時間、いいねの件数が一覧で表示されます。  
 [![Image from Gyazo](https://i.gyazo.com/76753b9fcf5abb9834e4fc7aca30936d.gif)](https://gyazo.com/76753b9fcf5abb9834e4fc7aca30936d)
 
+
 ## ・レシピ詳細表示機能
 レシピの写真、作成者、作り方、材料、ポイント、作成時間が表示されます。  
 レシピの閲覧は、ログインしていなくても可能です。  
