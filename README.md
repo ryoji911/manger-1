@@ -77,8 +77,7 @@ https://manger-1.herokuapp.com/
 
 
 # ER図
-<img width="680" alt="d218f8ed5c8ef82268652a17b0d1a72a" src="https://user-images.githubusercontent.com/74886411/103198299-52698300-492b-11eb-9528-b9f438492441.png">
-
+[![Image from Gyazo](https://i.gyazo.com/0bb7b2958790c5fe48d4361ebf7d95af.png)](https://gyazo.com/0bb7b2958790c5fe48d4361ebf7d95af)
 
 # テーブル設計
 
