@@ -73,7 +73,7 @@ https://manger-1.herokuapp.com/
 
 
 # ER図
-<img width="698" alt="e661e3db4ac49f87ec71b172cc586a4e" src="https://user-images.githubusercontent.com/74886411/103198096-d40ce100-492a-11eb-9234-2b666d99b7aa.png">
+<img width="680" alt="d218f8ed5c8ef82268652a17b0d1a72a" src="https://user-images.githubusercontent.com/74886411/103198299-52698300-492b-11eb-9528-b9f438492441.png">
 
 
 # テーブル設計
