@@ -41,7 +41,7 @@
   </div>
   <div class='register-btn'>
     <%= f.submit "ログイン" ,class:"register-blue-btn" %>
+    <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "register-guest-btn" %>
   </div>
-</div>
 <% end %>
 <%= render "shared/footer" %>

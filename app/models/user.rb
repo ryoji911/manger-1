@@ -24,4 +24,17 @@ class User < ApplicationRecord
     validates :career
   end
   validates :genre_id, numericality: { other_than: 1 }
+
+  def self.guest
+    find_or_create_by!(email: 'aaa@aaa.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.password_confirmation = user.password
+      user.name = 'ゲスト'
+      user.image.attach(io: File.open('app/assets/images/sample.jpg'), filename: 'sample.jpg')
+      user.genre_id = 3
+      user.restaurant = 'サンプル'
+      user.url = 'sample'
+      user.career = 'サンプル'
+    end
+  end
 end
